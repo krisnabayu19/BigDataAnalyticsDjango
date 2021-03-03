@@ -1,0 +1,18 @@
+
+{% block body %}
+
+<html>
+    <div class="container">
+        <h1>Home</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as.p}}
+            <textarea id="teks_input" type="text" name="teks_input" class="form-control" rows="8"></textarea>
+            <button type="submit">Submit</button>
+            
+        </form>       
+    </div>
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,648 @@
+{% load static %}
+{% block content%}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <!-- Indonesia Maps -->
+  <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/mapdata/countries/id/id-all.js"></script>
+
+  <!-- Line -->
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  <!-- Bar and Pie-->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          </li>
+        </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="{% static 'dist/img/bigdata.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Big Data Analytics</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'dist/img/bayu.png' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Krisna Bayu</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="checkemotion" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Check Emotion
+              </p>  
+            </a>
+          </li>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+            <!-- /.card Maps -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                  <div class="card-tools ">
+                      <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                  </div>
+                <h3 class="card-title">
+                  <i class="fas fa-map-marker-alt mr-1"></i>
+                  Maps
+                </h3>
+              </div>
+              <div class="card-body">
+                  <div class="card-tools">
+                      <ul class="nav nav-pills ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#bahagia-maps" data-toggle="tab">Emosi Bahagia</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#tidakbahagia-maps" data-toggle="tab">Emosi Tidak Bahagia</a>
+                        </li>
+                      </ul>
+                    </div>
+                <div class="tab-content p-0">
+                  <div class="chart tab-pane active" id="bahagia-maps" style="position: relative; height: 500px; max-width: 100%;">
+                    <canvas id="bahagia-canvas" height="500" style="height: 500px; width: 100%;"></canvas>                     
+                   </div>
+                  <div class="chart tab-pane" id="tidakbahagia-maps" style="position: relative; height: 500px; max-width: 100%;">
+                    <canvas id="tidak-bahagia-canvas" height="500" style="height: 500px; width: 100%;"></canvas>                         
+                  </div>  
+                </div>
+              </div>
+            </div>
+            <!-- /.card Maps-->
+
+            <!-- /.card Line -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <div class="card-tools ">
+                        <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="remove">
+                          <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                  <h3 class="card-title">
+                    <i class="fas fa-chart-line mr-1"></i>
+                    Line
+                  </h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-tools">
+                        <ul class="nav nav-pills ml-auto">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#bahagia-line" data-toggle="tab">Emosi Bahagia</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#tidakbahagia-line" data-toggle="tab">Emosi Tidak Bahagia</a>
+                          </li>
+                        </ul>
+                      </div>
+                  <div class="tab-content p-0">
+                    <div class="chart tab-pane active" id="bahagia-line" style="position: relative; height: 500px; max-width: 100%;">
+                        <figure class="highcharts-figure">
+                            <div id="bahagia-line"></div>
+                        </figure>
+                      </div>
+                    <div class="chart tab-pane" id="tidakbahagia-line" style="position: relative; height: 500px; max-width: 100%">
+                      <figure class="highcharts-figure">
+                          <div id="tidakbahagia-line"></div>
+                      </figure>
+                    </div>  
+                  </div>
+                </div>
+              </div>
+              <!-- /.card Line-->
+
+              <!-- /.card Bar -->
+              <div class="card card-primary card-outline">
+                  <div class="card-header">
+                      <div class="card-tools ">
+                          <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                          <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                          </button>
+                      </div>
+                    <h3 class="card-title">
+                      <i class="fas fa-chart-bar mr-1"></i>
+                      Bar
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                      <div class="card-tools">
+                          <ul class="nav nav-pills ml-auto">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="#bahagia-bar" data-toggle="tab">Emosi Bahagia</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#tidakbahagia-bar" data-toggle="tab">Emosi Tidak Bahagia</a>
+                            </li>
+                          </ul>
+                        </div>
+                    <div class="tab-content p-0">
+                      <div class="chart tab-pane active" id="bahagia-bar" style="position: relative; height: 500px; max-width: 100%;">
+                        <figure class="highcharts-figure">
+                            <div id="bahagia-bar"></div>
+                         </figure>
+                        </div>
+                      <div class="chart tab-pane" id="tidakbahagia-bar" style="position: relative; height: 500px; max-width: 100%">
+                        <figure class="highcharts-figure">
+                            <div id="tidakbahagia-bar"></div>
+                        </figure>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card Bar-->
+
+                <!-- /.card Pie -->
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <div class="card-tools ">
+                            <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="collapse">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn bg-gradient-white btn-sm" data-card-widget="remove">
+                              <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                      <h3 class="card-title">
+                        <i class="fas fa-chart-pie mr-1"></i>
+                        Pie
+                      </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart tab-pane active" id="bahagia-tidakbahagia-pie" style="position: relative; height: 500px; max-width: 100%;" >
+                          <figure class="highcharts-figure">
+                              <div id="bahagia-tidakbahagia-pie"></div>
+                          </figure>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- /.card Bar-->
+
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.0.5
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- ChartJS -->
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+<!-- Sparkline -->
+<script src="{% static 'plugins/sparklines/sparkline.js' %}"></script>
+<!-- JQVMap -->
+<script src="{% static 'plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{% static 'plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+<!-- daterangepicker -->
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<!-- Summernote -->
+<script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+
+<!-- Indonesia Maps JS -->
+<script>
+
+  // Data Emosi Bahagia
+  var data = {{happy_emotion_maps|safe}};
+
+  // Data Emosi Tidak Bahagia
+  var data1 = {{unhappy_emotion_maps|safe}};
+
+// Maps Emosi Bahagia
+Highcharts.mapChart('bahagia-maps', {
+    chart: {
+        map: 'countries/id/id-all'
+    },
+
+    title: {
+        text: 'Indonesia Maps Emosi Bahagia'
+    },
+
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 0
+    },
+
+    series: [{
+        data: data,
+        name: 'Emosi Bahagia',
+        states: {
+            hover: {
+                color: '#BADA55'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+
+// Maps Emosi tidak Bahagia
+Highcharts.mapChart('tidakbahagia-maps', {
+    chart: {
+        map: 'countries/id/id-all'
+    },
+
+    title: {
+        text: 'Indonesia Maps Emosi Tidak Bahagia'
+    },
+
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 0
+    },
+
+    series: [{
+        data: data1,
+        name: 'Emosi Tidak Bahagia',
+        states: {
+            hover: {
+                color: '#ff9900'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+</script>
+
+<!-- Indonesia Bar JS -->
+<script>
+// Bahagia
+Highcharts.chart('bahagia-bar', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Bar Emosi Bahagia'
+    },
+    xAxis: {
+        categories:{{month_happy_bar|safe}},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Data'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} Data</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Emosi Bahagia',
+        data: {{value_happy_bar|safe}}
+
+    }]
+});
+
+// Tidak Bahagia
+Highcharts.chart('tidakbahagia-bar', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Grafik Bar Emosi Tidak Bahagia'
+    },
+    xAxis: {
+        categories:{{month_unhappy_bar|safe}},
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Data'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} Data</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Emosi Tidak Bahagia',
+        data: {{value_unhappy_bar|safe}}
+
+    }]
+});
+</script>
+
+<!-- Indonesia Pie JS -->
+<script>
+Highcharts.chart('bahagia-tidakbahagia-pie', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Grafik Pie Emosi Bahagia dan Emosi Tidak Bahagia'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'Persentase',
+        colorByPoint: true,
+        data: [{
+            name: 'Emosi Bahagia',
+            y: {{value_happy_year_pie|safe}},
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Emosi Tidak Bahagia',
+            y: {{value_unhappy_year_pie|safe}},
+            sliced: true,
+            selected: true
+        }]
+    }]
+});
+</script>
+
+<!-- Indonesia Line New -->
+<script>
+
+    // Emosi Bahagia
+    Highcharts.chart('bahagia-line', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Selisih Persentase Line Emosi Bahagia'
+    },
+    xAxis: {
+        categories: {{data_happy_day_line|safe}}
+    },
+    yAxis: {
+        title: {
+            text: 'Selisih Persentase'
+        },
+        labels: {
+            formatter: function () {
+                return this.value + '%';
+            }
+        }
+    },
+    tooltip: {
+        crosshairs: true,
+        shared: true
+    },
+    plotOptions: {
+        spline: {
+            marker: {
+                radius: 4,
+                lineColor: '#666666',
+                lineWidth: 1
+            }
+        }
+    },
+    series: [{
+        name: 'Bahagia',
+        marker: {
+            symbol: 'round'
+        },
+        data: {{value_happy_day_line|safe}}
+
+    }]
+  });
+
+
+    // Emosi Tidak Bahagia
+    Highcharts.chart('tidakbahagia-line', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Selisih Persentase Line Emosi Tidak Bahagia'
+    },
+    xAxis: {
+        categories: {{data_unhappy_day_line|safe}}
+    },
+    yAxis: {
+        title: {
+            text: 'Selisih Persentase'
+        },
+        labels: {
+            formatter: function () {
+                return this.value + '%';
+            }
+        }
+    },
+    tooltip: {
+        crosshairs: true,
+        shared: true
+    },
+    plotOptions: {
+        spline: {
+            marker: {
+                radius: 4,
+                lineColor: '#666666',
+                lineWidth: 1
+            }
+        }
+    },
+    series: [{
+        name: 'Tidak Bahagia',
+        marker: {
+            symbol: 'round'
+        },
+        data: {{value_unhappy_day_line|safe}}
+
+    }]
+  });
+
+</script>
+</body>
+</html>
+{% endblock content%}
